@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class HealthSystem : MonoBehaviour
     private void Update()
     {
         UpdateHealthBar();
+        if (isPlayer && health <= 0)
+            SceneManager.LoadScene(0);
         if(isPlayer && tookDamage)
         {
             if (blood == null)
@@ -40,8 +43,10 @@ public class HealthSystem : MonoBehaviour
             }
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, GameObject attacker)
     {
+        if (attacker.gameObject.tag == this.gameObject.tag)
+            damage = 1;
         health -= damage;
         if (health < 0)
             health = 0;
@@ -67,6 +72,7 @@ public class HealthSystem : MonoBehaviour
     private void DamageIndicator()
     {
         timePassed = 0;
+        blood.CrossFadeAlpha(1, timeToPass*10, false);
         if (tookDamage)
         {
             return;

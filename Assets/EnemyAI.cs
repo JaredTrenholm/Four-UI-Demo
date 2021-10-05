@@ -18,11 +18,10 @@ public class EnemyAI : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         movement = movement * -1;
-        Debug.Log(collision.gameObject.tag + "/" + (collision.gameObject.tag == "Player"));
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<HealthSystem>().TakeDamage(damage);
-            this.gameObject.GetComponent<HealthSystem>().TakeDamage(damage);
+            collision.gameObject.GetComponent<HealthSystem>().TakeDamage(damage, this.gameObject);
+            this.gameObject.GetComponent<HealthSystem>().TakeDamage(damage, collision.gameObject);
         }
     }
 }
