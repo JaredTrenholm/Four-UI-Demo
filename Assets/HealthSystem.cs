@@ -72,7 +72,6 @@ public class HealthSystem : MonoBehaviour
     private void DamageIndicator()
     {
         timePassed = 0;
-        blood.CrossFadeAlpha(1, timeToPass*10, false);
         if (tookDamage)
         {
             return;

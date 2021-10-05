@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    public Camera camera;
+    public Camera cam;
     void Update()
     {
-        this.gameObject.transform.rotation = new Quaternion(camera.transform.rotation.x, camera.transform.rotation.y, camera.transform.rotation.z, camera.transform.rotation.w);
+        this.gameObject.transform.rotation = new Quaternion(cam.transform.rotation.x, cam.transform.rotation.y, cam.transform.rotation.z, cam.transform.rotation.w);
     }
 }
