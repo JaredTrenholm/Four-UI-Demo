@@ -48,6 +48,10 @@ public class HealthSystem : MonoBehaviour
 
         if (isPlayer)
             DamageIndicator();
+        else if(health <= 0)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
     public void Heal(int value)
     {

@@ -22,6 +22,7 @@ public class EnemyAI : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<HealthSystem>().TakeDamage(damage);
+            this.gameObject.GetComponent<HealthSystem>().TakeDamage(damage);
         }
     }
 }
